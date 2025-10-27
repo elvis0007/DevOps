@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevOps - Cultura y Filosofía</title>
+  <meta name="description" content="DevOps: cultura, metodología y herramientas para unificar desarrollo y operaciones. Aprende sobre su historia, características, ventajas y más.">
+  
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --dark-bg: #0a1b2d;
+      --dark-alt: #092537;
+      --accent: #5aeaff;
+      --accent2: #7d5fff;
+      --text-light: #e8faff;
+      --text-muted: #9abddf;
+      --card-bg: #11263d;
+      --glass: rgba(255, 255, 255, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--dark-bg);
+      color: var(--text-light);
+      font-family: Inter, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--accent2);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    nav a {
+      margin-left: 16px;
+      font-weight: 500;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 32px;
+      padding: 60px 0;
+    }
+
+    .hero .text h1 {
+      font-size: 2.8rem;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero .text p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .hero-image {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      height: 400px;
+      background-size: cover;
+      background-position: center;
+      background-image: url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      margin: 60px 0 24px;
+      color: var(--accent);
+      position: relative;
+      padding-bottom: 12px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+
+    .content-section {
+      margin-bottom: 60px;
+    }
+
+    .content-section p {
+      margin-bottom: 16px;
+      color: var(--text-muted);
+    }
+
+    .content-section ul, .content-section ol {
+      margin-left: 24px;
+      margin-bottom: 16px;
+      color: var(--text-muted);
+    }
+
+    .content-section li {
+      margin-bottom: 8px;
+    }
+
+    .highlight {
+      background: var(--card-bg);
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      margin: 20px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--glass);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-card h3 {
+      margin-bottom: 12px;
+      color: var(--text-light);
+      font-size: 1.3rem;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 24px;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .tool-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+      border: 1px solid var(--glass);
+      transition: transform 0.3s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .tool-card h4 {
+      margin-top: 8px;
+      color: var(--text-light);
+    }
+
+    .tool-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .pros-cons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .pros-cons {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pros, .cons {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      border: 1px solid var(--glass);
+    }
+
+    .pros h3 {
+      color: #4ade80;
+      margin-bottom: 16px;
+    }
+
+    .cons h3 {
+      color: #f87171;
+      margin-bottom: 16px;
+    }
+
+    .pros ul, .cons ul {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    .pros li, .cons li {
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .pros li:before {
+      content: "✓";
+      color: #4ade80;
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .cons li:before {
+      content: "⚠";
+      color: #f87171;
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .video-section {
+      text-align: center;
+      padding: 60px 0;
+      background: linear-gradient(135deg, var(--dark-bg), var(--dark-alt));
+      border-radius: 12px;
+      margin: 60px 0;
+    }
+
+    .video-container {
+      position: relative;
+      width: 80%;
+      max-width: 900px;
+      margin: 0 auto;
+      box-shadow: 0 0 30px rgba(90, 234, 255, 0.2);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .video-container iframe {
+      display: block;
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+
+    footer {
+      margin-top: 80px;
+      border-top: 1px solid var(--glass);
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--text-muted);
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero-image {
+        height: 300px;
+        margin-top: 20px;
+      }
+
+      .video-container iframe {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">DevOps</div>
+      <nav>
+        <a href="#historia">Historia</a>
+        <a href="#definicion">Definición</a>
+        <a href="#caracteristicas">Características</a>
+        <a href="#metodologias">Metodologías</a>
+        <a href="#herramientas">Herramientas</a>
+        <a href="#ventajas">Ventajas</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div class="text">
+        <h1>Cultura y Filosofía DevOps</h1>
+        <p>DevOps representa una evolución en la forma en que las organizaciones desarrollan, entregan y operan software. Trasciende siendo una moda tecnológica para constituirse en una transformación integral que abarca personas, procesos y tecnología.</p>
+      </div>
+      <div class="hero-image"></div>
+    </div>
+
+    <section id="introduccion" class="content-section">
+      <h2 class="section-title">Introducción</h2>
+      <p>En la actualidad, las organizaciones de software enfrentan el reto de entregar productos de alta calidad en el menor tiempo posible. Los modelos tradicionales separan a los equipos de desarrollo y operaciones, lo que genera conflictos y retrasos en las entregas.</p>
+      <p>DevOps surge como una respuesta a este problema, teniendo así un cambio cultural, metodológico y tecnológico; busca unir a ambos equipos para trabajar de forma colaborativa y eficiente. Este enfoque no es solo un conjunto de herramientas, sino una filosofía que redefine cómo se desarrollan, implementan y mantienen los sistemas.</p>
+    </section>
+
+    <section id="historia" class="content-section">
+      <h2 class="section-title">Historia de DevOps</h2>
+      <p>Antes de DevOps, el trabajo entre desarrollo y operaciones generaba procesos lentos y con fallas frecuentes. En 2007, Patrick Debois experimentó este problema en un proyecto de migración y buscó soluciones.</p>
+      <p>En 2008, conoció a Andrew Clay Shafer y empezaron a difundir ideas sobre aplicar principios ágiles a operaciones de TI. En 2009, la charla de John Allspaw y Paul Hammond sobre la cooperación Dev y Ops en Flickr demostró que es posible hacer despliegues diarios. Inspirado, Debois se organizó el primer "DevOpsDays" en Bélgica, evento que marcó el nacimiento del movimiento.</p>
+      <div class="highlight">
+        <p>Entre 2010 y 2015, DevOps se expandió a nivel global a través de más DevOpsDays, comunidades y nuevas herramientas. Se consolidaron prácticas de integración continua, entrega e implementación continua.</p>
+      </div>
+      <p>Un hecho importante fue la publicación de The Phoenix Project en 2013, que popularizó DevOps entre empresas. Con el tiempo, el enfoque evolucionó. Surgieron variaciones como DevSecOps, GitOps y DataOps, además de la integración de tecnologías como Docker, Kubernetes y la nube, que facilitó la adopción a gran escala.</p>
+      <p>Hoy en día, DevOps es un estándar en la industria del software, con un rol profesional definido y en constante evolución, especialmente con la llegada de la inteligencia artificial y el aprendizaje automático.</p>
+    </section>
+
+    <section id="definicion" class="content-section">
+      <h2 class="section-title">Definición de DevOps</h2>
+      <p>DevOps combina las palabras Development y Operations, aunque también es una cultura, metodología y conjunto de herramientas que buscan integrar procesos, automatizar tareas y reducir tiempos de entrega sin perder calidad.</p>
+      
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon">👥</div>
+          <h3>Dimensión Cultural</h3>
+          <p>Rompe barreras entre equipos, promueve colaboración, responsabilidad compartida, comunicación y aprendizaje continuo.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h3>Dimensión Metodológica</h3>
+          <p>Amplía los principios ágiles e integra desarrollo y operaciones, reduciendo tiempo entre un cambio y su implementación.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚙️</div>
+          <h3>Dimensión Tecnológica</h3>
+          <p>Basado en automatizar pruebas, despliegues, monitoreo e infraestructura como código, permitiendo mayor control, estabilidad y velocidad.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="caracteristicas" class="content-section">
+      <h2 class="section-title">Características Principales</h2>
+      
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3>Colaboración Continua</h3>
+          <p>Se promueve un entorno donde desarrolladores, operadores, testers y otras áreas trabajan de forma integrada, eliminando silos tradicionales.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Automatización Extensiva</h3>
+          <p>En todo el proceso del desarrollo, la automatización es clave para lograr eficiencia, calidad y entregas rápidas.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h3>Ciclos de Entrega Rápidos</h3>
+          <p>La integración y entrega continua permite liberar nuevas actualizaciones en menor tiempo en comparación con otros modelos.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Retroalimentación Constante</h3>
+          <p>Se prioriza la obtención de métricas e información de los sistemas en tiempo real para mejorar los procesos.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💻</div>
+          <h3>Infraestructura como Código</h3>
+          <p>Gestiona la infraestructura con archivos de configuración versionables, reduce errores y afirma entornos reproducibles.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>Orientación a la Calidad y Seguridad</h3>
+          <p>Se incluye prácticas de testing automatizado, análisis de vulnerabilidades y cumplimiento de estándares de seguridad desde etapas tempranas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="metodologias" class="content-section">
+      <h2 class="section-title">Metodologías Asociadas</h2>
+      
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h3>Agile</h3>
+          <p>DevOps es una extensión de Agile. Ambas metodologías buscan mejorar la colaboración, reducir tiempos de entrega y centrarse en el cliente.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📋</div>
+          <h3>Scrum</h3>
+          <p>Gestiona equipos de desarrollo bajo marcos iterativos e incrementales, favoreciendo a la colaboración con operaciones.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h3>Kanban</h3>
+          <p>Visualiza el flujo de trabajo, detecta cuellos de botella y optimiza los procesos, alineándose con los principios de mejora continua de DevOps.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚖️</div>
+          <h3>Lean IT</h3>
+          <p>Elimina desperdicios en procesos y se centra en maximizar el valor entregado al cliente, reforzando la eficiencia operativa.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛠️</div>
+          <h3>ITIL v4</h3>
+          <p>Esta orientado a operaciones, ITIL se adapta a entornos DevOps para mejorar la gestión de servicios.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>CALMS Framework</h3>
+          <p>Culture, Automation, Lean, Measurement, Sharing; marco de referencia para medir y guiar la adopción de DevOps en organizaciones.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="herramientas" class="content-section">
+      <h2 class="section-title">Herramientas Comunes</h2>
+      
+      <h3>Control de Versiones</h3>
+      <p>Gestiona el código de manera colaborativa y segura.</p>
+      <div class="tools-grid">
+        <div class="tool-card">
+          <h4>Git</h4>
+          <p>Sistema de control de versiones distribuido</p>
+        </div>
+        <div class="tool-card">
+          <h4>GitHub</h4>
+          <p>Plataforma de desarrollo colaborativo</p>
+        </div>
+        <div class="tool-card">
+          <h4>GitLab</h4>
+          <p>Plataforma completa de DevOps</p>
+        </div>
+      </div>
+      
+      <h3>Integración y Entrega Continua (CI/CD)</h3>
+      <p>Automatiza la compilación, pruebas y despliegue del software.</p>
+      <div class="tools-grid">
+        <div class="tool-card">
+          <h4>Jenkins</h4>
+          <p>Servidor de automatización de código abierto</p>
+        </div>
+        <div class="tool-card">
+          <h4>GitLab CI/CD</h4>
+          <p>Integración nativa en GitLab</p>
+        </div>
+        <div class="tool-card">
+          <h4>CircleCI</h4>
+          <p>Plataforma de CI/CD en la nube</p>
+        </div>
+      </div>
+      
+      <h3>Contenedores y Orquestación</h3>
+      <p>Empaqueta aplicaciones con sus dependencias y desplegarlas de forma escalable y portable.</p>
+      <div class="tools-grid">
+        <div class="tool-card">
+          <h4>Docker</h4>
+          <p>Plataforma de contenedores</p>
+        </div>
+        <div class="tool-card">
+          <h4>Kubernetes</h4>
+          <p>Sistema de orquestación de contenedores</p>
+        </div>
+        <div class="tool-card">
+          <h4>OpenShift</h4>
+          <p>Plataforma de contenedores empresarial</p>
+        </div>
+      </div>
+      
+      <h3>Infraestructura como Código (IaC)</h3>
+      <p>Automatiza la provisión y configuración de servidores y entornos.</p>
+      <div class="tools-grid">
+        <div class="tool-card">
+          <h4>Terraform</h4>
+          <p>Herramienta de IaC multiplataforma</p>
+        </div>
+        <div class="tool-card">
+          <h4>Ansible</h4>
+          <p>Automatización de TI y gestión de configuraciones</p>
+        </div>
+        <div class="tool-card">
+          <h4>Puppet</h4>
+          <p>Gestión de configuración automatizada</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="principios" class="content-section">
+      <h2 class="section-title">Principios Fundamentales</h2>
+      
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h3>Integración Continua (CI)</h3>
+          <p>Los desarrolladores integran su código en un repositorio compartido. Cada integración se verifica mediante compilación automatizada y pruebas, ya que permite detectar errores rápidamente.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚚</div>
+          <h3>Entrega Continua (CD)</h3>
+          <p>El código validado se mantiene siempre en un estado listo para ser desplegado en producción.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Implementación Continua</h3>
+          <p>Cada cambio que pasa las pruebas automatizadas se despliega automáticamente en producción sin intervención humana.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Monitoreo Continuo</h3>
+          <p>Visibilidad completa y en tiempo real del rendimiento, estado y comportamiento, con sistemas de alerta que permiten respuesta rápida ante incidentes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h3>Retroalimentación Continua</h3>
+          <p>Ciclos rápidos de feedback, que permiten incorporar las lecciones aprendidas, desde las métricas hasta comentarios.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ventajas" class="content-section">
+      <h2 class="section-title">Ventajas y Desventajas</h2>
+      
+      <div class="pros-cons">
+        <div class="pros">
+          <h3>Ventajas</h3>
+          <ul>
+            <li>Reducción del Tiempo de Comercialización y Ciclo de Vida del producto</li>
+            <li>Mejoras en la Colaboración Interdisciplinaria y Cultura Organizacional</li>
+            <li>Incremento en la Calidad y Estabilidad del Software</li>
+            <li>Eficiencia Operativa y Reducción de Costos</li>
+            <li>Disminución del Riesgo y Mejor Control de Despliegues</li>
+            <li>Mayor Satisfacción del Cliente y Mejor Adaptación a sus Necesidades</li>
+          </ul>
+        </div>
+        
+        <div class="cons">
+          <h3>Desventajas</h3>
+          <ul>
+            <li>Resistencia Cultural y Cambio Organizacional</li>
+            <li>Alta Complejidad y Requerimiento de Habilidades Diversas</li>
+            <li>Dependencia de Herramientas y Automatización</li>
+            <li>Riesgos de Seguridad y Control</li>
+            <li>Complejidad de Gestión en Entornos Distribuidos y Multicloud</li>
+            <li>Problemas con la Calidad y Consistencia del Código</li>
+            <li>Sobrecarga de Ejecución y Mantenimiento de Procesos Automatizados</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <h2 class="section-title">Video sobre DevOps</h2>
+      <div class="video-container">
+        <iframe width="100%" height="500" src="https://www.youtube.com/embed/_I94-tJlovg" title="¿Qué es DevOps?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <footer>
+      <div>© 2025 DevOps - Cultura y Filosofía</div>
+      <div>
+        <a href="#introduccion">Introducción</a> &middot;
+        <a href="#historia">Historia</a> &middot;
+        <a href="#herramientas">Herramientas</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
