@@ -67,6 +67,13 @@
     nav a {
       margin-left: 16px;
       font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background: var(--glass);
     }
 
     .hero {
@@ -157,6 +164,7 @@
       backdrop-filter: blur(4px);
       border: 1px solid var(--glass);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
     }
 
     .feature-card:hover {
@@ -185,6 +193,19 @@
       justify-content: center;
       margin-bottom: 16px;
       font-size: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Eliminados los iconos genéricos y reemplazados por elementos más sutiles */
+    .feature-icon::before {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: white;
+      opacity: 0.2;
+      border-radius: 50%;
     }
 
     .tools-grid {
@@ -205,6 +226,7 @@
 
     .tool-card:hover {
       transform: translateY(-3px);
+      border-color: var(--accent);
     }
 
     .tool-card h4 {
@@ -336,6 +358,74 @@
         height: 300px;
       }
     }
+
+    /* Mejoras adicionales para un aspecto más profesional */
+    .card-number {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 14px;
+      color: var(--accent);
+      opacity: 0.7;
+      font-weight: 600;
+    }
+
+    .tool-icon {
+      font-size: 32px;
+      color: var(--accent);
+      margin-bottom: 10px;
+      display: inline-block;
+      background: var(--glass);
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      border-radius: 50%;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 40px auto;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 40px;
+      margin-bottom: 30px;
+    }
+
+    .timeline-item:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .timeline-item:after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 12px;
+      width: 2px;
+      height: calc(100% + 18px);
+      background: var(--accent);
+      opacity: 0.3;
+    }
+
+    .timeline-item:last-child:after {
+      display: none;
+    }
   </style>
 </head>
 
@@ -355,7 +445,7 @@
 
     <div class="hero">
       <div class="text">
-        <h1>Cultura y Filosofía DevOps</h1>
+        <h1>Cultura y Filosofía <span class="gradient-text">DevOps</span></h1>
         <p>DevOps representa una evolución en la forma en que las organizaciones desarrollan, entregan y operan software. Trasciende siendo una moda tecnológica para constituirse en una transformación integral que abarca personas, procesos y tecnología.</p>
       </div>
       <div class="hero-image"></div>
@@ -369,13 +459,31 @@
 
     <section id="historia" class="content-section">
       <h2 class="section-title">Historia de DevOps</h2>
-      <p>Antes de DevOps, el trabajo entre desarrollo y operaciones generaba procesos lentos y con fallas frecuentes. En 2007, Patrick Debois experimentó este problema en un proyecto de migración y buscó soluciones.</p>
-      <p>En 2008, conoció a Andrew Clay Shafer y empezaron a difundir ideas sobre aplicar principios ágiles a operaciones de TI. En 2009, la charla de John Allspaw y Paul Hammond sobre la cooperación Dev y Ops en Flickr demostró que es posible hacer despliegues diarios. Inspirado, Debois se organizó el primer "DevOpsDays" en Bélgica, evento que marcó el nacimiento del movimiento.</p>
-      <div class="highlight">
-        <p>Entre 2010 y 2015, DevOps se expandió a nivel global a través de más DevOpsDays, comunidades y nuevas herramientas. Se consolidaron prácticas de integración continua, entrega e implementación continua.</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>2007 - Los Primeros Problemas</h3>
+          <p>Patrick Debois experimentó los problemas de separación entre desarrollo y operaciones en un proyecto de migración, lo que le motivó a buscar soluciones.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>2008 - Encuentro Clave</h3>
+          <p>Conoce a Andrew Clay Shafer y comienzan a difundir ideas sobre aplicar principios ágiles a operaciones de TI.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>2009 - Nacimiento Oficial</h3>
+          <p>La charla de John Allspaw y Paul Hammond en Flickr demostró que era posible hacer despliegues diarios. Patrick Debois organizó el primer "DevOpsDays" en Bélgica.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>2010-2015 - Expansión Global</h3>
+          <p>DevOps se expande a nivel global a través de más DevOpsDays, comunidades y nuevas herramientas. Se consolidan prácticas de CI/CD.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>2013 - Popularización</h3>
+          <p>Publicación de "The Phoenix Project" que popularizó DevOps entre empresas.</p>
+        </div>
       </div>
-      <p>Un hecho importante fue la publicación de The Phoenix Project en 2013, que popularizó DevOps entre empresas. Con el tiempo, el enfoque evolucionó. Surgieron variaciones como DevSecOps, GitOps y DataOps, además de la integración de tecnologías como Docker, Kubernetes y la nube, que facilitó la adopción a gran escala.</p>
-      <p>Hoy en día, DevOps es un estándar en la industria del software, con un rol profesional definido y en constante evolución, especialmente con la llegada de la inteligencia artificial y el aprendizaje automático.</p>
+      <div class="highlight">
+        <p>Hoy en día, DevOps es un estándar en la industria del software, con un rol profesional definido y en constante evolución, especialmente con la llegada de la inteligencia artificial y el aprendizaje automático.</p>
+      </div>
     </section>
 
     <section id="definicion" class="content-section">
@@ -384,17 +492,20 @@
       
       <div class="features">
         <div class="feature-card">
-          <div class="feature-icon">👥</div>
+          <div class="card-number">01</div>
+          <div class="feature-icon"></div>
           <h3>Dimensión Cultural</h3>
           <p>Rompe barreras entre equipos, promueve colaboración, responsabilidad compartida, comunicación y aprendizaje continuo.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🔄</div>
+          <div class="card-number">02</div>
+          <div class="feature-icon"></div>
           <h3>Dimensión Metodológica</h3>
           <p>Amplía los principios ágiles e integra desarrollo y operaciones, reduciendo tiempo entre un cambio y su implementación.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">⚙️</div>
+          <div class="card-number">03</div>
+          <div class="feature-icon"></div>
           <h3>Dimensión Tecnológica</h3>
           <p>Basado en automatizar pruebas, despliegues, monitoreo e infraestructura como código, permitiendo mayor control, estabilidad y velocidad.</p>
         </div>
@@ -406,32 +517,38 @@
       
       <div class="features">
         <div class="feature-card">
-          <div class="feature-icon">🤝</div>
+          <div class="card-number">01</div>
+          <div class="feature-icon"></div>
           <h3>Colaboración Continua</h3>
           <p>Se promueve un entorno donde desarrolladores, operadores, testers y otras áreas trabajan de forma integrada, eliminando silos tradicionales.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">⚡</div>
+          <div class="card-number">02</div>
+          <div class="feature-icon"></div>
           <h3>Automatización Extensiva</h3>
           <p>En todo el proceso del desarrollo, la automatización es clave para lograr eficiencia, calidad y entregas rápidas.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🚀</div>
+          <div class="card-number">03</div>
+          <div class="feature-icon"></div>
           <h3>Ciclos de Entrega Rápidos</h3>
           <p>La integración y entrega continua permite liberar nuevas actualizaciones en menor tiempo en comparación con otros modelos.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">📊</div>
+          <div class="card-number">04</div>
+          <div class="feature-icon"></div>
           <h3>Retroalimentación Constante</h3>
           <p>Se prioriza la obtención de métricas e información de los sistemas en tiempo real para mejorar los procesos.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">💻</div>
+          <div class="card-number">05</div>
+          <div class="feature-icon"></div>
           <h3>Infraestructura como Código</h3>
           <p>Gestiona la infraestructura con archivos de configuración versionables, reduce errores y afirma entornos reproducibles.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🔒</div>
+          <div class="card-number">06</div>
+          <div class="feature-icon"></div>
           <h3>Orientación a la Calidad y Seguridad</h3>
           <p>Se incluye prácticas de testing automatizado, análisis de vulnerabilidades y cumplimiento de estándares de seguridad desde etapas tempranas.</p>
         </div>
@@ -443,32 +560,38 @@
       
       <div class="features">
         <div class="feature-card">
-          <div class="feature-icon">🔄</div>
+          <div class="card-number">01</div>
+          <div class="feature-icon"></div>
           <h3>Agile</h3>
           <p>DevOps es una extensión de Agile. Ambas metodologías buscan mejorar la colaboración, reducir tiempos de entrega y centrarse en el cliente.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">📋</div>
+          <div class="card-number">02</div>
+          <div class="feature-icon"></div>
           <h3>Scrum</h3>
           <p>Gestiona equipos de desarrollo bajo marcos iterativos e incrementales, favoreciendo a la colaboración con operaciones.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">📈</div>
+          <div class="card-number">03</div>
+          <div class="feature-icon"></div>
           <h3>Kanban</h3>
           <p>Visualiza el flujo de trabajo, detecta cuellos de botella y optimiza los procesos, alineándose con los principios de mejora continua de DevOps.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">⚖️</div>
+          <div class="card-number">04</div>
+          <div class="feature-icon"></div>
           <h3>Lean IT</h3>
           <p>Elimina desperdicios en procesos y se centra en maximizar el valor entregado al cliente, reforzando la eficiencia operativa.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🛠️</div>
+          <div class="card-number">05</div>
+          <div class="feature-icon"></div>
           <h3>ITIL v4</h3>
           <p>Esta orientado a operaciones, ITIL se adapta a entornos DevOps para mejorar la gestión de servicios.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🎯</div>
+          <div class="card-number">06</div>
+          <div class="feature-icon"></div>
           <h3>CALMS Framework</h3>
           <p>Culture, Automation, Lean, Measurement, Sharing; marco de referencia para medir y guiar la adopción de DevOps en organizaciones.</p>
         </div>
@@ -482,14 +605,17 @@
       <p>Gestiona el código de manera colaborativa y segura.</p>
       <div class="tools-grid">
         <div class="tool-card">
+          <div class="tool-icon">Git</div>
           <h4>Git</h4>
           <p>Sistema de control de versiones distribuido</p>
         </div>
         <div class="tool-card">
+          <div class="tool-icon">GH</div>
           <h4>GitHub</h4>
           <p>Plataforma de desarrollo colaborativo</p>
         </div>
         <div class="tool-card">
+          <div class="tool-icon">GL</div>
           <h4>GitLab</h4>
           <p>Plataforma completa de DevOps</p>
         </div>
@@ -499,14 +625,17 @@
       <p>Automatiza la compilación, pruebas y despliegue del software.</p>
       <div class="tools-grid">
         <div class="tool-card">
+          <div class="tool-icon">J</div>
           <h4>Jenkins</h4>
           <p>Servidor de automatización de código abierto</p>
         </div>
         <div class="tool-card">
+          <div class="tool-icon">CI</div>
           <h4>GitLab CI/CD</h4>
           <p>Integración nativa en GitLab</p>
         </div>
         <div class="tool-card">
+          <div class="tool-icon">CC</div>
           <h4>CircleCI</h4>
           <p>Plataforma de CI/CD en la nube</p>
         </div>
@@ -516,14 +645,17 @@
       <p>Empaqueta aplicaciones con sus dependencias y desplegarlas de forma escalable y portable.</p>
       <div class="tools-grid">
         <div class="tool-card">
+          <div class="tool-icon">D</div>
           <h4>Docker</h4>
           <p>Plataforma de contenedores</p>
         </div>
         <div class="tool-card">
+          <div class="tool-icon">K8s</div>
           <h4>Kubernetes</h4>
           <p>Sistema de orquestación de contenedores</p>
         </div>
         <div class="tool-card">
+          <div class="tool-icon">OS</div>
           <h4>OpenShift</h4>
           <p>Plataforma de contenedores empresarial</p>
         </div>
@@ -533,14 +665,17 @@
       <p>Automatiza la provisión y configuración de servidores y entornos.</p>
       <div class="tools-grid">
         <div class="tool-card">
+          <div class="tool-icon">TF</div>
           <h4>Terraform</h4>
           <p>Herramienta de IaC multiplataforma</p>
         </div>
         <div class="tool-card">
+          <div class="tool-icon">A</div>
           <h4>Ansible</h4>
           <p>Automatización de TI y gestión de configuraciones</p>
         </div>
         <div class="tool-card">
+          <div class="tool-icon">P</div>
           <h4>Puppet</h4>
           <p>Gestión de configuración automatizada</p>
         </div>
@@ -552,27 +687,32 @@
       
       <div class="features">
         <div class="feature-card">
-          <div class="feature-icon">🔄</div>
+          <div class="card-number">01</div>
+          <div class="feature-icon"></div>
           <h3>Integración Continua (CI)</h3>
           <p>Los desarrolladores integran su código en un repositorio compartido. Cada integración se verifica mediante compilación automatizada y pruebas, ya que permite detectar errores rápidamente.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🚚</div>
+          <div class="card-number">02</div>
+          <div class="feature-icon"></div>
           <h3>Entrega Continua (CD)</h3>
           <p>El código validado se mantiene siempre en un estado listo para ser desplegado en producción.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">⚡</div>
+          <div class="card-number">03</div>
+          <div class="feature-icon"></div>
           <h3>Implementación Continua</h3>
           <p>Cada cambio que pasa las pruebas automatizadas se despliega automáticamente en producción sin intervención humana.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">📊</div>
+          <div class="card-number">04</div>
+          <div class="feature-icon"></div>
           <h3>Monitoreo Continuo</h3>
           <p>Visibilidad completa y en tiempo real del rendimiento, estado y comportamiento, con sistemas de alerta que permiten respuesta rápida ante incidentes.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🔄</div>
+          <div class="card-number">05</div>
+          <div class="feature-icon"></div>
           <h3>Retroalimentación Continua</h3>
           <p>Ciclos rápidos de feedback, que permiten incorporar las lecciones aprendidas, desde las métricas hasta comentarios.</p>
         </div>
@@ -613,8 +753,16 @@
     <section class="video-section">
       <h2 class="section-title">Video sobre DevOps</h2>
       <div class="video-container">
-        <iframe width="100%" height="500" src="https://www.youtube.com/watch?v=yBwuo3BNqwA&feature=youtu.be" title="CICDGithub Actions" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <!-- URL CORREGIDA: Usando formato embed de YouTube -->
+        <iframe 
+          src="https://www.youtube.com/embed/yBwuo3BNqwA" 
+          title="DevOps - Cultura y Filosofía" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
       </div>
+      <p style="margin-top: 20px; color: var(--text-muted);">Video explicativo sobre la implementación de DevOps en entornos modernos</p>
     </section>
 
     <footer>
@@ -627,5 +775,4 @@
     </footer>
   </div>
 </body>
-
 </html>
